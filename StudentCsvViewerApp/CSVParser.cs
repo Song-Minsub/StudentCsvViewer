@@ -1,60 +1,52 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Windows.Documents;
 
 namespace StudentCsvViewer
 {
     public class CSVParser
     {
-        public StringBuilder builder = new StringBuilder();
-        public Students[] students = new Students[100]; // 넉넉하게 설정
-        public int studentCount = 0;
+        public List<Students> Students { get; private set; } = new List<Students>();
+        public List<Subject> Subjects { get; private set; } = new List<Subject>();
 
-        public Subject[] subjects = new Subject[10];
-        public int subjectCount = 0;
 
-        public void CSVParser_Students(string fileName)
+        public void LoadStudents(string fileName)
         {
-            studentCount = 0;
-            builder.Clear();
+            var lines = File.ReadAllLines(fileName, Encoding.Default);
 
-            StreamReader sr = new StreamReader(fileName, Encoding.Default);
-            sr.ReadLine(); // 헤더 제거
-
-            while (!sr.EndOfStream)
+            for (int i = 1; i < lines.Length; i++)
             {
-                string line = sr.ReadLine();
-                string[] fields = line.Split(',');
+                string[] fields = lines[i].Split(new char[] { ',', ';' });
 
-                if (fields.Length < 4)
-                    continue;
-
-                Students s = new Students(fields);
-                students[studentCount++] = s;
-
-                string text = $"{s.name}\t{s.age}\t{s.grade.Replace(";", "\t")}\t{s.major}\n";
-                builder.Append(text);
+                Students.Add(new Students
+                {
+                    name = fields[0],
+                    age = int.Parse(fields[1]),
+                    koreanScore = int.Parse(fields[2]),
+                    englishScore = int.Parse(fields[3]),
+                    mathScore = int.Parse(fields[4]),
+                    scienceScore = int.Parse(fields[5]),
+                    major = fields[6]
+                });
             }
-            sr.Close();
         }
 
-        public void CSVParser_Subject(string fileName)
+        public void LoadSubject(string fileName)
         {
-            subjectCount = 0;
+            var lines = File.ReadAllLines(fileName, Encoding.Default);
 
-            StreamReader sr = new StreamReader(fileName, Encoding.Default);
-            sr.ReadLine();
-
-            while (!sr.EndOfStream)
+            for (int i = 1; i < lines.Length; i++)
             {
-                string line = sr.ReadLine();
-                string[] fields = line.Split(',');
+                string[] fields = lines[i].Split(new char[] { ',', ';' });
 
-                if (fields.Length < 3)
-                    continue;
-
-                subjects[subjectCount++] = new Subject(fields);
+                Subjects.Add(new Subject
+                {
+                    name = fields[0],
+                    imageFile = fields[1],
+                    desc = fields[2]
+                });
             }
-            sr.Close();
         }
     }
 }

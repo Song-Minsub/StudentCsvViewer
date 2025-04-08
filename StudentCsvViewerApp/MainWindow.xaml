@@ -5,23 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentCsvViewer"
         mc:Ignorable="d"
-        Title="StudentCsvViewer" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="StudentCsvViewer" Height="450" Width="800">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="750"
                     Margin="20,20" Orientation="Horizontal" Background="Beige">
-            <Label Content="이름" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown_Name"/>
-            <Label Content="나이" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown_Age"/>
-            <Label x:Name="Lb_Korean" Content="국어" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown_Korean"/>
-            <Label x:Name="Lb_English" Content="영어" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown_English"/>
-            <Label x:Name="Lb_Math" Content="수학" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown_Math"/>
-            <Label x:Name="Lb_Science" Content="과학" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown_Science"/>
+            <Label x:Name="lbName" Content="이름" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+            <Label x:Name="lbAge" Content="나이" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+            <Label x:Name="lbKorean" Content="국어" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+            <Label x:Name="lbEnglish" Content="영어" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+            <Label x:Name="lbMath" Content="수학" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
+            <Label x:Name="lbScience" Content="과학" VerticalAlignment="Center" FontSize="23" Width="100" MouseLeftButtonDown="Label_MouseLeftButtonDown"/>
             <Label Content="학과" VerticalAlignment="Center" FontSize="23" Width="100"/>
         </StackPanel>
         <StackPanel x:Name="StackPanel" HorizontalAlignment="Left" Height="320" VerticalAlignment="Bottom" Width="750"
                     Margin="20,20" Orientation="Vertical" >
-            <ScrollViewer Height="320">
-                <TextBlock x:Name="tb_text" HorizontalAlignment="Left" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" Width="Auto"
-                  FontSize="20" />
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <ListBox x:Name="lbData" Height="300" ItemsSource="{Binding Students}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding name}" Margin="5,5,70,0"/>
+                                <TextBlock Text="{Binding age}" Margin="5,5,70,0"/>
+                                <TextBlock Text="{Binding koreanScore}" Margin="5,5,70,0"/>
+                                <TextBlock Text="{Binding englishScore}" Margin="5,5,70,0"/>
+                                <TextBlock Text="{Binding mathScore}" Margin="5,5,70,0"/>
+                                <TextBlock Text="{Binding scienceScore}" Margin="5,5,70,0"/>
+                                <TextBlock Text="{Binding major}" Margin="5,5,70,0"/>
+
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
             </ScrollViewer>
         </StackPanel>
     </Grid>

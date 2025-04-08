@@ -12,11 +12,5 @@ namespace StudentCsvViewer
         public string imageFile { get; set; }
         public string desc { get; set; }
 
-        public Subject(string[] fields)
-        {
-            name = fields[0];
-            imageFile = fields[1];
-            desc = fields[2];
-        }
     }
 }

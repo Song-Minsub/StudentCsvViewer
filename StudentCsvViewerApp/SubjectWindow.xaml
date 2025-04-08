@@ -7,22 +7,17 @@
         mc:Ignorable="d"
         Title="SubjectWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="3*"></RowDefinition>
-            <RowDefinition Height="3*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap"
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap"
                      x:Name="Tb_Subject" Width="Auto" FontSize="25"/>
-        </Grid>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" 
-                     x:Name="Tb_Desc" Width="Auto" FontSize="20"/>
-        </Grid>
-        <Grid Grid.Row="2" Grid.Column="0">
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" 
+                     x:Name="Tb_Desc" Width="700" FontSize="20"/>
+            </StackPanel>
             <Image  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="Auto"
-                    x:Name ="Tb_Photo" Width="400" Source="국어.png"/>
-        </Grid>
+                    x:Name ="Tb_Photo" Width="200"/>
+        </StackPanel>
     </Grid>
 </Window>
