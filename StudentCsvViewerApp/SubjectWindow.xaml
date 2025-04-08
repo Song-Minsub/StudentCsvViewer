@@ -1,0 +1,28 @@
+﻿<Window x:Class="StudentCsvViewer.SubjectWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StudentCsvViewer"
+        mc:Ignorable="d"
+        Title="SubjectWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap"
+                     x:Name="Tb_Subject" Width="Auto" FontSize="25"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" TextWrapping="Wrap" 
+                     x:Name="Tb_Desc" Width="Auto" FontSize="20"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0">
+            <Image  HorizontalAlignment="Center" VerticalAlignment="Center"  Height="Auto"
+                    x:Name ="Tb_Photo" Width="400" Source="국어.png"/>
+        </Grid>
+    </Grid>
+</Window>
